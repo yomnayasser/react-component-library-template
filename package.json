@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "A simple template for a custom React component library",
   "scripts": {
-    "rollup": "rollup -c"
+    "rollup": "rollup -c",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "npm run build:types && npm run build:rollup"
   },
   "author": "yomna",
   "license": "ISC",

@@ -3,7 +3,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 
-import packageJson from "./package.json" assert { type: "json" };
+import { readFileSync } from "fs";
+
+const packageJson = JSON.parse(readFileSync("./package.json", "utf8"));
 
 export default [
   {
@@ -28,7 +30,7 @@ export default [
   },
   {
     input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    output: [{ file: packageJson.types, format: "esm" }],
     plugins: [dts()],
   },
 ];
